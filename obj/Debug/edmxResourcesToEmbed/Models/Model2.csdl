@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Interactivo2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="asignatura">
+    <Key>
+      <PropertyRef Name="id_asignatura" />
+    </Key>
+    <Property Name="id_asignatura" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="estudiante1">
+    <Key>
+      <PropertyRef Name="id_estudiante" />
+    </Key>
+    <Property Name="id_estudiante" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_nacimiento" Type="DateTime" Precision="3" />
+    <Property Name="cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="notas1">
+    <Key>
+      <PropertyRef Name="id_notas" />
+    </Key>
+    <Property Name="id_notas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_estudiante" Type="Int32" Nullable="false" />
+    <Property Name="id_asignatura" Type="Int32" Nullable="false" />
+    <Property Name="nombre_asignatura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nota1" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="nota2" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="nota3" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="definitiva" Type="Decimal" Precision="22" Scale="3" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityContainer Name="Interactivo2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="asignatura" EntityType="Self.asignatura" />
+    <EntitySet Name="estudiante1" EntityType="Self.estudiante1" />
+    <EntitySet Name="notas1" EntityType="Self.notas1" />
+  </EntityContainer>
+</Schema>

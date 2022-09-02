@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Interactivo2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="asignatura">
+    <Key>
+      <PropertyRef Name="id_asignatura" />
+    </Key>
+    <Property Name="id_asignatura" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="estudiante1">
+    <Key>
+      <PropertyRef Name="id_estudiante" />
+    </Key>
+    <Property Name="id_estudiante" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="apellido" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="fecha_nacimiento" Type="datetime" />
+    <Property Name="cargo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="notas1">
+    <Key>
+      <PropertyRef Name="id_notas" />
+    </Key>
+    <Property Name="id_notas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_estudiante" Type="int" Nullable="false" />
+    <Property Name="id_asignatura" Type="int" Nullable="false" />
+    <Property Name="nombre_asignatura" Type="varchar" MaxLength="50" />
+    <Property Name="nota1" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="nota2" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="nota3" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="definitiva" Type="numeric" Precision="22" Scale="3" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityContainer Name="Interactivo2ModelStoreContainer">
+    <EntitySet Name="asignatura" EntityType="Self.asignatura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="estudiante1" EntityType="Self.estudiante1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="notas1" EntityType="Self.notas1" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

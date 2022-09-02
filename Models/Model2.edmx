@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Interactivo2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="asignatura">
+          <Key>
+            <PropertyRef Name="id_asignatura" />
+          </Key>
+          <Property Name="id_asignatura" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="estudiante1">
+          <Key>
+            <PropertyRef Name="id_estudiante" />
+          </Key>
+          <Property Name="id_estudiante" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="apellido" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="fecha_nacimiento" Type="datetime" />
+          <Property Name="cargo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="notas1">
+          <Key>
+            <PropertyRef Name="id_notas" />
+          </Key>
+          <Property Name="id_notas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_estudiante" Type="int" Nullable="false" />
+          <Property Name="id_asignatura" Type="int" Nullable="false" />
+          <Property Name="nombre_asignatura" Type="varchar" MaxLength="50" />
+          <Property Name="nota1" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="nota2" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="nota3" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="definitiva" Type="numeric" Precision="22" Scale="3" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityContainer Name="Interactivo2ModelStoreContainer">
+          <EntitySet Name="asignatura" EntityType="Self.asignatura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="estudiante1" EntityType="Self.estudiante1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="notas1" EntityType="Self.notas1" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Interactivo2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="asignatura">
+          <Key>
+            <PropertyRef Name="id_asignatura" />
+          </Key>
+          <Property Name="id_asignatura" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="estudiante1">
+          <Key>
+            <PropertyRef Name="id_estudiante" />
+          </Key>
+          <Property Name="id_estudiante" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_nacimiento" Type="DateTime" Precision="3" />
+          <Property Name="cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="notas1">
+          <Key>
+            <PropertyRef Name="id_notas" />
+          </Key>
+          <Property Name="id_notas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_estudiante" Type="Int32" Nullable="false" />
+          <Property Name="id_asignatura" Type="Int32" Nullable="false" />
+          <Property Name="nombre_asignatura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nota1" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="nota2" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="nota3" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="definitiva" Type="Decimal" Precision="22" Scale="3" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityContainer Name="Interactivo2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="asignatura" EntityType="Self.asignatura" />
+          <EntitySet Name="estudiante1" EntityType="Self.estudiante1" />
+          <EntitySet Name="notas1" EntityType="Self.notas1" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Interactivo2ModelStoreContainer" CdmEntityContainer="Interactivo2Entities">
+          <EntitySetMapping Name="asignatura">
+            <EntityTypeMapping TypeName="Interactivo2Model.asignatura">
+              <MappingFragment StoreEntitySet="asignatura">
+                <ScalarProperty Name="id_asignatura" ColumnName="id_asignatura" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estudiante1">
+            <EntityTypeMapping TypeName="Interactivo2Model.estudiante1">
+              <MappingFragment StoreEntitySet="estudiante1">
+                <ScalarProperty Name="id_estudiante" ColumnName="id_estudiante" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+                <ScalarProperty Name="cargo" ColumnName="cargo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="notas1">
+            <EntityTypeMapping TypeName="Interactivo2Model.notas1">
+              <MappingFragment StoreEntitySet="notas1">
+                <ScalarProperty Name="id_notas" ColumnName="id_notas" />
+                <ScalarProperty Name="id_estudiante" ColumnName="id_estudiante" />
+                <ScalarProperty Name="id_asignatura" ColumnName="id_asignatura" />
+                <ScalarProperty Name="nombre_asignatura" ColumnName="nombre_asignatura" />
+                <ScalarProperty Name="nota1" ColumnName="nota1" />
+                <ScalarProperty Name="nota2" ColumnName="nota2" />
+                <ScalarProperty Name="nota3" ColumnName="nota3" />
+                <ScalarProperty Name="definitiva" ColumnName="definitiva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
